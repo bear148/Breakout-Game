@@ -1,7 +1,7 @@
 import Paddle from './paddle.js'; // Get Paddle Class ! MAKE SURE THAT IN HTML FILE, THE JS FILE IS LINKED LIKE THIS 	<script type="module" src="src/main.js"></script>
 import InputHandler from './input.js';
 import Ball from './ball.js';
-import { buildLevel, level1, level2 } from './levels.js';
+import { buildLevel, level1, level2, level3, level4 } from './levels.js';
 import { randInt } from './randInt.js';
 
 const GAMESTATE = {
@@ -23,12 +23,12 @@ export default class Game {
 		this.gameObjects = [];
 		this.bricks = [];
 		this.lives = 1;
-		this.levels = [level1, level2];
+		this.levels = [level1, level2, level3, level4];
 		this.currentLevel = 0; // First entry in index.
 		this.score = 0;
 		this.showScore = false;
 		this.scoreX = 10;
-		this.version = "v2.2.0";
+		this.version = "v3.2.0";
 		this.author = "Michael S.";
 		this.year = "2022";
 		this.levelsPassed = 0;
@@ -53,14 +53,14 @@ export default class Game {
 			this.showScore = false;
 			return;
 		}
-		if(this.levelsPassed == 2) {
+		if(this.levelsPassed == 4) {
 			this.finished = true;
 		}
 		
 		if(this.bricks.length === 0 && this.finished != true) {
 			this.currentLevel++;
 			this.levelsPassed++;
-			if(this.levelsPassed >= 2) {
+			if(this.levelsPassed >= 4) {
 				this.gamestate = GAMESTATE.WIN;
 				this.finished = true;
 			} else {
