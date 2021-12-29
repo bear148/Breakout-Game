@@ -10,6 +10,7 @@ const GAMESTATE = {
 	MENU: 2,
 	GAMEOVER: 3,
 	NEWLEVEL: 4,
+	WIN: 5
 }
 
 export default class Game {
@@ -27,9 +28,11 @@ export default class Game {
 		this.score = 0;
 		this.showScore = false;
 		this.scoreX = 10;
-		this.version = "v2.1.0";
+		this.version = "v2.2.0";
 		this.author = "Michael S.";
 		this.year = "2022";
+		this.levelsPassed = 0;
+		this.finished = false;
 		new InputHandler(this.paddle, this);
 	}
  
@@ -46,15 +49,24 @@ export default class Game {
 	}
 
 	update(deltaTime) {
-		if(this.gamestate === GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU || this.gamestate === GAMESTATE.GAMEOVER ) {
+		if(this.gamestate === GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU || this.gamestate === GAMESTATE.GAMEOVER || this.gamestate === GAMESTATE.WIN) {
 			this.showScore = false;
 			return;
 		}
-
-		if(this.bricks.length === 0) {
+		if(this.levelsPassed == 2) {
+			this.finished = true;
+		}
+		
+		if(this.bricks.length === 0 && this.finished != true) {
 			this.currentLevel++;
-			this.gamestate = GAMESTATE.NEWLEVEL;
-			this.start();
+			this.levelsPassed++;
+			if(this.levelsPassed >= 2) {
+				this.gamestate = GAMESTATE.WIN;
+				this.finished = true;
+			} else {
+				this.gamestate = GAMESTATE.NEWLEVEL;
+				this.start();
+			}
 		}
 
 		if(this.score > 9) {
@@ -98,6 +110,18 @@ export default class Game {
 			ctx.fillStyle = "white";
 			ctx.textAlign = "center";
 			ctx.fillText("GAME OVER!", this.gameWidth / 2, this.gameHeight / 2);
+		}
+		if(this.finished === true) {
+			this.gamestate = GAMESTATE.WIN;
+			let finalscore = "Score: " + this.score; 
+			ctx.rect(0,0,this.gameWidth, this.gameHeight);
+			ctx.fillStyle = "rgba(0,100,100,1)";
+			ctx.fill();
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "white";
+			ctx.textAlign = "center";
+			ctx.fillText("YOU WIN! :D", this.gameWidth / 2, this.gameHeight / 2);
+			ctx.fillText(finalscore, 400, 450);
 		}
 		if(this.showScore) {
 			ctx.font = "30px Arial";

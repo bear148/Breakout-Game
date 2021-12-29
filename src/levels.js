@@ -32,6 +32,7 @@ export const level1 = [
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)],
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)],
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)]
+  //[0, 0, 0, 0, 0, 0, 0, 1, 0, 0] Used for debugging game states
 ];
 
 export const level2 = [
@@ -40,4 +41,5 @@ export const level2 = [
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)],
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)],
   [randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2), randInt(0, 2)]
+  //[0, 0, 0, 0, 0, 0, 0, 1, 0, 0] Used for debugging game states
 ];
