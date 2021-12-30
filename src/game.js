@@ -28,7 +28,7 @@ export default class Game {
 		this.score = 0;
 		this.showScore = false;
 		this.scoreX = 10;
-		this.version = "v3.2.0";
+		this.version = "v4.2.0";
 		this.author = "Michael S.";
 		this.year = "2022";
 		this.levelsPassed = 0;
